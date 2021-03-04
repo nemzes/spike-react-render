@@ -24,7 +24,7 @@ function App() {
     if (!anchor.current) {
       console.log("setting anchor for first time");
     }
-    console.log(element);
+    console.log("anchor:", element);
     anchor.current = element;
   };
   return (
