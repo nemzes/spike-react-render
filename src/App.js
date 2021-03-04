@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./App.css";
 
 const rows = [...Array(1000).keys()];
@@ -10,7 +10,7 @@ function MyComponent({ callback, children }) {
   const handleClick = () => {
     setClicks(clicks + 1);
     callback(ref.current);
-  }
+  };
   return (
     <div ref={ref} onClick={handleClick} className="blah">
       {children} ({clicks})
@@ -20,16 +20,13 @@ function MyComponent({ callback, children }) {
 
 function App() {
   const anchor = useRef(null);
-  const handleClick = useCallback(
-    (element) => {
-      if (!anchor) {
-        console.log('setting anchor for first time')
-      }
-      console.log(element);
-      anchor.current = element;
-    },
-    []
-  );
+  const handleClick = (element) => {
+    if (!anchor.current) {
+      console.log("setting anchor for first time");
+    }
+    console.log(element);
+    anchor.current = element;
+  };
   return (
     <div>
       <table>
